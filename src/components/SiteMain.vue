@@ -34,14 +34,19 @@ export default {
     };
   },
   mounted() {
-    axios
-      .get("https://flynn.boolean.careers/exercises/api/array/music")
-      .then((r) => {
-        this.musics = r.data.response;
-      })
-      .catch((e) => {
-        console.log(e, "Non funge");
-      });
+    this.callApi();
+  },
+  methods: {
+    callApi() {
+      axios
+        .get("https://flynn.boolean.careers/exercises/api/array/music")
+        .then((r) => {
+          this.musics = r.data.response;
+        })
+        .catch((e) => {
+          console.log(e, "Non funge");
+        });
+    },
   },
 };
 </script>
