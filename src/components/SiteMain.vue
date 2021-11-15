@@ -1,14 +1,16 @@
 <template>
   <main id="site-main">
     <div class="container">
-      <div class="row">
+      <div class="row justify-content-center py-5">
         <div class="col col-2" v-for="music in musics" :key="music.ident">
           <div class="card p-3">
             <div class="image">
               <img class="img-fluid" :src="music.poster" alt="" />
             </div>
             <div class="title">
-              <h4>{{ music.title }}</h4>
+              <h4 class="text-center text-white text-uppercase fs-5">
+                {{ music.title }}
+              </h4>
             </div>
             <div class="author">
               <span>{{ music.author }}</span>
@@ -47,12 +49,13 @@ export default {
 <style lang="scss">
 #site-main {
   background: #1e2d3b;
+  min-height: calc(100vh - 80px);
   .row {
-    padding-top: 7rem;
     .col {
-      margin-top: 1rem;
       .card {
+        margin-top: 1rem;
         height: 320px;
+        width: 180px;
         background: rgba(255, 255, 255, 0.088);
         text-align: center;
         .image {

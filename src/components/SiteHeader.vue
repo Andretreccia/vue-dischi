@@ -9,7 +9,7 @@
 
 <style lang="scss">
 #site-header {
-  height: 100px;
+  height: 80px;
   background: #2e3a46;
   .logo {
     height: 100%;
