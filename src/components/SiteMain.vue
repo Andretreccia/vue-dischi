@@ -1,7 +1,7 @@
 <template>
   <main id="site-main">
     <div class="container">
-      <div class="row justify-content-center py-5">
+      <div class="row justify-content-center py-5" v-if="this.loading == true">
         <div class="col col-2" v-for="music in musics" :key="music.ident">
           <div class="card p-3">
             <div class="image">
@@ -21,6 +21,9 @@
           </div>
         </div>
       </div>
+      <div class="loading" v-else>
+        <h1 class="text-light text-center">CARICAMENTO..</h1>
+      </div>
     </div>
   </main>
 </template>
@@ -31,17 +34,19 @@ export default {
   data() {
     return {
       musics: [],
+      loading: false,
     };
   },
   mounted() {
-    this.callApi();
+    setTimeout(this.callMusicApi, 3000);
   },
   methods: {
-    callApi() {
+    callMusicApi() {
       axios
         .get("https://flynn.boolean.careers/exercises/api/array/music")
         .then((r) => {
           this.musics = r.data.response;
+          this.loading = true;
         })
         .catch((e) => {
           console.log(e, "Non funge");
