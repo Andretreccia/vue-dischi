@@ -1,6 +1,8 @@
 <template>
   <main id="site-main">
-    <SelectElement />
+    <SelectElement
+      @genreFilter="pippo"
+    /><!-- pippoprende il valore che abbiamo passato e memorizzarlo  -->
     <div class="container">
       <div class="row justify-content-center py-5" v-if="this.loading == true">
         <div class="col col-2" v-for="music in musics" :key="music.ident">
@@ -57,6 +59,19 @@ export default {
           console.log(e, "Non funge");
         });
     },
+    pippo(genreValue) {
+      /* pippo conserva il valore del mio select */
+      console.log(genreValue);
+    },
+    /* filterFunction(){
+
+    } */
+  },
+  computed: {
+    /* filteredArrayMusics() {
+      array.filter(this.filterFunction);
+      return;
+    }, */
   },
 };
 </script>
