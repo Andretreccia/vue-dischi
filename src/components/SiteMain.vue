@@ -1,5 +1,17 @@
 <template>
   <main id="site-main">
+    <div class="select">
+      <select
+        class="form-select form-select-lg mb-3"
+        aria-label=".form-select-lg example"
+      >
+        <option selected>Seleziona un genere</option>
+        <option value="1">Rock</option>
+        <option value="2">Pop</option>
+        <option value="3">Jazz</option>
+        <option value="4">Metal</option>
+      </select>
+    </div>
     <div class="container">
       <div class="row justify-content-center py-5" v-if="this.loading == true">
         <div class="col col-2" v-for="music in musics" :key="music.ident">
