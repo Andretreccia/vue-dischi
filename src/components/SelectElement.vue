@@ -6,7 +6,7 @@
       v-model="genreValue"
       @change="$emit('genreFilter', genreValue)"
     >
-      <option selected>Seleziona un genere</option>
+      <option value="">Seleziona un genere</option>
       <option value="Rock">Rock</option>
       <option value="Pop">Pop</option>
       <option value="Jazz">Jazz</option>

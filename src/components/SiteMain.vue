@@ -1,7 +1,7 @@
 <template>
   <main id="site-main">
     <SelectElement
-      @genreFilter="pippo"
+      @genreFilter="addGenreValue"
     /><!-- pippoprende il valore che abbiamo passato e memorizzarlo  -->
     <div class="container">
       <div class="row justify-content-center py-5" v-if="this.loading == true">
@@ -46,7 +46,7 @@ export default {
     return {
       musics: [],
       loading: false,
-      paperino: "",
+      valueSelected: "",
     };
   },
   mounted() {
@@ -64,18 +64,22 @@ export default {
           console.log(e, "Non funge");
         });
     },
-    pippo(genreValue) {
+    addGenreValue(genreValue) {
       /* pippo conserva il valore del mio select */
       //console.log(genreValue);
-      this.paperino = genreValue;
+      this.valueSelected = genreValue;
     },
   },
   computed: {
     filteredArrayMusics() {
-      const pappa = this.musics.filter((music) => {
-        return music.genre.includes(this.paperino);
+      if (this.valueSelected == "") {
+        return this.musics;
+      }
+
+      const arrayMusicFiltered = this.musics.filter((music) => {
+        return music.genre.includes(this.valueSelected);
       });
-      return pappa;
+      return arrayMusicFiltered;
     },
   },
 };
