@@ -5,7 +5,11 @@
     /><!-- pippoprende il valore che abbiamo passato e memorizzarlo  -->
     <div class="container">
       <div class="row justify-content-center py-5" v-if="this.loading == true">
-        <div class="col col-2" v-for="music in musics" :key="music.ident">
+        <div
+          class="col col-2"
+          v-for="music in filteredArrayMusics"
+          :key="music.ident"
+        >
           <div class="card p-3">
             <div class="image">
               <img class="img-fluid" :src="music.poster" alt="" />
@@ -42,6 +46,7 @@ export default {
     return {
       musics: [],
       loading: false,
+      paperino: "",
     };
   },
   mounted() {
@@ -61,17 +66,17 @@ export default {
     },
     pippo(genreValue) {
       /* pippo conserva il valore del mio select */
-      console.log(genreValue);
+      //console.log(genreValue);
+      this.paperino = genreValue;
     },
-    /* filterFunction(){
-
-    } */
   },
   computed: {
-    /* filteredArrayMusics() {
-      array.filter(this.filterFunction);
-      return;
-    }, */
+    filteredArrayMusics() {
+      const pappa = this.musics.filter((music) => {
+        return music.genre.includes(this.paperino);
+      });
+      return pappa;
+    },
   },
 };
 </script>
